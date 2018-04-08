@@ -5,7 +5,7 @@
 # \author 			Geoffrey Hunter (www.mbedded.ninja) <gbmhunter@gmail.com>
 # \edited           n/a
 # \created			2017-09-27
-# \last-modified	2017-11-27
+# \last-modified	2018-04-08
 # \brief 			Bash script for building/installing the source code.
 # \details
 #		See README.md in root dir for more info.
@@ -20,7 +20,7 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . ${script_dir}/lib/utilities.sh
 
 printInfo "=========================================================================================="
-printInfo "=================================== CppTemplate build.sh ================================="
+printInfo "==================================== CTemplate build.sh =================================="
 printInfo "=========================================================================================="
 
 set +e
@@ -65,7 +65,7 @@ make -j8 run_unit_tests
 
 if [[ "$FLAGS_coverage" == $FLAGS_TRUE ]]; then
     printInfo 'Running coverage report...'
-    make -j8 CppTemplate_coverage
+    make -j8 CTemplate_coverage
     lcov --directory . --capture --output-file coverage.info # capture coverage info
     lcov --remove coverage.info '/usr/*' --output-file coverage.info # filter out system
     lcov --remove coverage.info '*/test/*' --output-file coverage.info # filter out test
